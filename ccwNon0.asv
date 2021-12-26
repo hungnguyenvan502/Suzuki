@@ -1,0 +1,6 @@
+function counter = ccwNon0(F, w, h, i0, j0, i, j, offset, N_PIXEL_NEIGHBOR)
+    ID = neighborIndexToID(i0, j0, i, j);
+    for k = 0:N_PIXEL_NEIGHBOR -1
+        kk = mod(-k + ID - offset + N_PIXEL_NEIGHBOR*2, )
+end
+

@@ -1,0 +1,19 @@
+classdef Contour
+    %CONTOUR Summary of this class goes here
+    %   Detailed explanation goes here
+    
+    properties
+        %dinh
+        points
+        %unique id, start from 2
+        id
+        %id of parent contour, 0 = top-level contour
+        parent
+        %is this contour a hole
+        isHole
+    end
+    methods
+        function obj = set
+    end
+end
+
