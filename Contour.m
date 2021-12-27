@@ -25,6 +25,18 @@ classdef Contour
         function obj = set.isHole(obj, value)
             obj.isHole = value;
         end
+        function obj = setPoints(value)
+            obj.points = value;
+        end
+        function obj = setID(value)
+            obj.id = value;
+        end
+        function obj = setParent(value)
+            obj.parent = value;
+        end
+        function obj = setIsHole(value)
+            obj.isHole = value;
+        end
     end
 end
 

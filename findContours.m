@@ -3,6 +3,7 @@ function contours = findContours(F, w, h)
     %Tránh mất tính tổng quát, giả sử 0-pixel lấp đấy frame ảnh nhị phân
     nbd = 1;
     lnbd = 1;
+    contours = Contour;
     for i = 1:h-2
         F(i*h) = 0;
         F(1*w + w + 1) = 0;
@@ -37,14 +38,14 @@ function contours = findContours(F, w, h)
         end
         B = Contour;
         B.points = [];
-        B.points(end + 1) = Point(j, i);
+        B.points = [B.points Point(j, i)];
         B.isHole = j2 == j + 1;
         B.id = nbd;
         contours(end + 1) = B;
         
         B0 = Contour;
-        for c = 0:size(contours)
-            if contours(c).id == lnbd
+        for c = 0:size(contours, 1)
+            if contours(c+1).id == lnbd
                 B0 = contours(c);
                 break;
             end
@@ -65,14 +66,14 @@ function contours = findContours(F, w, h)
             
         i1 = -1; j1 = -1;
         i1j1 = cwNon0(F, w, h, i, j, i2, j2, 0, N_PIXEL_NEIGHBOR);
-        if isNaN(i1j1)
+        if isnan(i1j1)
             F(i*w + j) = -nbd;
             if F(i*w + j) ~= 1
                 lnbd = abs(F(i*w + j));
             end
             continue;
         end
-        i1 = i1j1(0); j1 = i1j1(1);
+        i1 = i1j1(1); j1 = i1j1(2);
         i2 = i1;
         j2 = j1;
         i3 = i;
@@ -80,7 +81,7 @@ function contours = findContours(F, w, h)
         
         while true
             i4j4 = ccwNon0(F, w, h, i3, j3, i2, j2, 1, N_PIXEL_NEIGHBOR);
-            i4 = i4j4(0); j4 = i4j4(1);
+            i4 = i4j4(1); j4 = i4j4(2);
             
             contours(end).points(end) = Point(j4, i4);
             

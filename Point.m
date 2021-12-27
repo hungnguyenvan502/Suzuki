@@ -14,6 +14,18 @@ classdef Point
             obj.x = x1;
             obj.y = y1;
         end
+        function obj = set.x(obj, value)
+            obj.x = value;
+        end
+        function obj = set.y(obj, value)
+            obj.y = value;
+        end
+        function obj = setX(value)
+            obj.x = value;
+        end
+        function obj = setY(value)
+            obj.y = value;
+        end
     end
 end
 

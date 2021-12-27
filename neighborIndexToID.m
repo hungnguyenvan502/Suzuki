@@ -1,6 +1,7 @@
 function ID = neighborIndexToID(i0, j0, i, j)
     di = i - i0;
     dj = j - j0;
+    ID = 0;
     if di == 0 && dj == 1
         ID = 0;
     end

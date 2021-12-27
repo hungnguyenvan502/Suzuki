@@ -1,5 +1,5 @@
 function ret  = approxPolyDP(polyline, epsilon)
-    if polyline.size(0) <= 2
+    if size(polyline) <= 2
         ret = polyline;
         return;
     end
